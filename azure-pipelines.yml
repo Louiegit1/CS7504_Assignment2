@@ -1,4 +1,4 @@
-trigger:
+﻿trigger:
   - main
 
 pool:
@@ -7,7 +7,6 @@ pool:
 variables:
   imageRepository: 'keteora-ordermgmt'
   containerRegistry: 'acrketeora2026.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
   tag: '$(Build.BuildId)'
 
 stages:
@@ -22,8 +21,8 @@ stages:
             inputs:
               command: build
               repository: $(imageRepository)
-              dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
-              buildContext: '$(Build.SourcesDirectory)/app'
+              dockerfile: 'app/Dockerfile'
+              buildContext: '$(Build.SourcesDirectory)'
               tags: |
                 $(tag)
                 latest
