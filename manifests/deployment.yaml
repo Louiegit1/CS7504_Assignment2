@@ -1,0 +1,21 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keteora-ordermgmt
+  labels:
+    app: keteora-ordermgmt
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: keteora-ordermgmt
+  template:
+    metadata:
+      labels:
+        app: keteora-ordermgmt
+    spec:
+      containers:
+      - name: keteora-ordermgmt
+        image: acrketeora2026.azurecr.io/keteora-ordermgmt:latest
+        ports:
+        - containerPort: 80
