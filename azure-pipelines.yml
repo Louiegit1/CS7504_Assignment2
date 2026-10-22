@@ -20,7 +20,7 @@ stages:
             displayName: Build Docker Image
             inputs:
               command: build
-              repository: $(imageRepository)
+              repository: $(containerRegistry)/$(imageRepository)
               dockerfile: 'app/Dockerfile'
               buildContext: '$(Build.SourcesDirectory)'
               tags: |
@@ -36,7 +36,7 @@ stages:
               sudo apt-get install trivy -y
               
               echo "Running Trivy image scan for vulnerabilities..."
-              trivy image --severity HIGH,CRITICAL $(imageRepository):$(tag)
+              trivy image --severity HIGH,CRITICAL $(containerRegistry)/$(imageRepository):$(tag)
             displayName: 'Task 2.2: Trivy Security Vulnerability Scan'
 
           - task: Docker@2
