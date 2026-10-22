@@ -2,7 +2,7 @@
 WORKDIR /src
 COPY ["app/SampleWebApp/SampleWebApp.csproj", "SampleWebApp/"]
 RUN dotnet restore "SampleWebApp/SampleWebApp.csproj"
-COPY app/SampleWebApp/ ./SampleWebApp/
+COPY app/SampleWebApp/ SampleWebApp/
 WORKDIR "/src/SampleWebApp"
 RUN dotnet build "SampleWebApp.csproj" -c Release -o /app/build
 RUN dotnet publish "SampleWebApp.csproj" -c Release -o /app/publish /p:UseAppHost=false
