@@ -22,7 +22,8 @@ stages:
             inputs:
               command: build
               repository: $(imageRepository)
-              dockerfile: $(dockerfilePath)
+              dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
+              buildContext: '$(Build.SourcesDirectory)/app'
               tags: |
                 $(tag)
                 latest
